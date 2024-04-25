@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \GlsPoland\Shipping\Block\Adminhtml\Shipping\GlsPackaging
+ */
+
+if ($block->isGlsPolandShipping()): ?>
+    <input type="checkbox" name="shipment[gls_poland_add_service_srs]" id="gls_poland_add_service_srs"
+           class="admin__control-checkbox" <?= !$block->isServiceSrsAvailable() ? 'disabled' : '' ?>>
+    <label class="admin__field-label" for="gls_poland_add_service_srs">
+        <span><?= $block->escapeHtml(__('Add SRS Service')) ?></span>
+    </label>
+
+    <?php if (!$block->isServiceSrsAvailable()): ?>
+        <p class="note"><span><?=  $block->escapeHtml(__('SRS service not provided in the country')) ?></span></p>
+    <?php endif; ?>
+<?php endif; ?>
